@@ -61,15 +61,17 @@ def rfft2d_freqs(h, w):
     return np.sqrt(fx * fx + fy * fy)
 
 
-def fft_image(shape, sd=None, decay_power=1):
+def fft_image(shape, sd=None, decay_power=1, init_val=None):
     """An image paramaterization using 2D Fourier coefficients."""
 
     sd = sd or 0.01
     batch, h, w, ch = shape
     freqs = rfft2d_freqs(h, w)
-    init_val_size = (2, batch, ch) + freqs.shape
 
-    init_val = np.random.normal(size=init_val_size, scale=sd).astype(np.float32)
+    if init_val is None:
+        init_val_size = (2, batch, ch) + freqs.shape
+        init_val = np.random.normal(size=init_val_size, scale=sd).astype(np.float32)
+
     spectrum_real_imag_t = tf.Variable(init_val)
     spectrum_t = tf.complex(spectrum_real_imag_t[0], spectrum_real_imag_t[1])
 
