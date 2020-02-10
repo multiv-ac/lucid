@@ -42,7 +42,9 @@ def pixel_image(shape, sd=None, init_val=None):
 
     sd = sd or 0.01
     if init_val is not None:
-        init_val = init_val or np.random.normal(size=shape, scale=sd).astype(np.float32)
+        init_val = init_val
+    else:
+        init_val = np.random.normal(size=shape, scale=sd).astype(np.float32)
     return tf.Variable(init_val)
 
 
