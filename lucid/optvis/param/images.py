@@ -31,13 +31,14 @@ def image(
     fft=True,
     alpha=False,
     channels=None,
+    init_val=None,
 ):
     h = h or w
     batch = batch or 1
     ch = channels or (4 if alpha else 3)
     shape = [batch, h, w, ch]
     param_f = fft_image if fft else pixel_image
-    t = param_f(shape, sd=sd)
+    t = param_f(shape, sd=sd, init_val=init_val)
     if channels:
         output = tf.nn.sigmoid(t)
     else:
