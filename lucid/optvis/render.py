@@ -100,7 +100,6 @@ def render_vis(model, objective_f, param_f=None, optimizer=None,
     images = []
     try:
       for i in range(max(thresholds)+1):
-        loss_, _ = sess.run([loss, vis_op])
         if i in thresholds:
           vis = t_image.eval()
           images.append(vis)
@@ -108,6 +107,8 @@ def render_vis(model, objective_f, param_f=None, optimizer=None,
             print(i, loss_)
             print_objective_func(sess)
             show(np.hstack(vis))
+        loss_, _ = sess.run([loss, vis_op])
+
     except KeyboardInterrupt:
       log.warning("Interrupted optimization at step {:d}.".format(i+1))
       vis = t_image.eval()
