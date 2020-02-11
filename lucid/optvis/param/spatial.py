@@ -78,9 +78,9 @@ def fft_image(shape, sd=None, decay_power=1, init_val=None):
     # Scale the spectrum. First normalize energy, then scale by the square-root
     # of the number of pixels to get a unitary transformation.
     # This allows to use similar leanring rates to pixel-wise optimisation.
-    scale = 1.0 / np.maximum(freqs, 1.0 / max(w, h)) ** decay_power
-    scale *= np.sqrt(w * h)
-    scaled_spectrum_t = scale * spectrum_t
+    #scale = 1.0 / np.maximum(freqs, 1.0 / max(w, h)) ** decay_power
+    #scale *= np.sqrt(w * h)
+    #scaled_spectrum_t = scale * spectrum_t
 
     # convert complex scaled spectrum to shape (h, w, ch) image tensor
     # needs to transpose because irfft2d returns channels first
