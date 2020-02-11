@@ -84,7 +84,7 @@ def fft_image(shape, sd=None, decay_power=1, init_val=None):
 
     # convert complex scaled spectrum to shape (h, w, ch) image tensor
     # needs to transpose because irfft2d returns channels first
-    image_t = tf.transpose(tf.spectral.irfft2d(scaled_spectrum_t), (0, 2, 3, 1))
+    image_t = tf.transpose(tf.spectral.irfft2d(spectrum_t), (0, 2, 3, 1))
 
     # in case of odd spatial input dimensions we need to crop
     image_t = image_t[:batch, :h, :w, :ch]
