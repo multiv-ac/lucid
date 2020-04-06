@@ -48,9 +48,9 @@ class InceptionV1(Model):
   the original paper, where as the slim and caffe implementations have
   minor implementation differences (such as eliding the heads).
   """
-  model_path = 'gs://modelzoo/vision/other_models/InceptionV1.pb'
-  labels_path = 'gs://modelzoo/labels/ImageNet_alternate.txt'
-  synsets_path = 'gs://modelzoo/labels/ImageNet_alternate_synsets.txt'
+  model_path = '/home/sabrina/Documents/github/lucid/lucid/modelzoo/other_models/InceptionV1.pb'
+  labels_path = '/home/sabrina/Documents/github/lucid/lucid/modelzoo/other_models/ImageNet_alternate.txt'
+  synsets_path = '/home/sabrina/Documents/github/lucid/lucid/modelzoo/other_models/ImageNet_alternate_synsets.txt'
   dataset = 'ImageNet'
   image_shape = [224, 224, 3]
   image_value_range = (-117, 255-117)
